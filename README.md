@@ -1,4 +1,4 @@
-# perfumes-web-app
+# perfumes-store
 
 Complete Ecommerce ReactJS Application &amp; NestJS
 
