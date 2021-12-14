@@ -13,92 +13,82 @@ export interface Product {
   [
     { 
       "id": 1,
-      "title":"Ponita-White", 
+      "title":"Fleur de Bonita", 
       "price": 110,
       "size": "10ml",
-      "image": "Ponita-white.png",
+      "image": "assets/Fleur-de-Bonita.png",
       "category": "feminine",
       "type": "Minty Floral",
-      "description":"A fresh and uplifting Ponita fragrance, Ponita WHI  TE is a sultry white. Love is in the air with notes of Lemongrass, Lavender and White Flowers. Infused with Eucalyptus and Sandalwood, WHITE is perfectly relaxing, in the cool of winter or in the heat of summer."
+      "description":"Fleur de Bonita 1969 is a perfume by Bonita for women. The release year is unknown. The scent is fresh-spicy. It is being marketed by ars Parfum."
     },
     { 
       "id": 2,
-      "title":"Ponita-Perfume", 
+      "title":"bonita Men Le Bleu", 
       "price":92,
       "size": "50ml",
-      "image": "Ponita-perfume.png",
-      "category": "feminine",
+      "image": "assets/bonita-Men-Le-Bleu.png",
+      "category": "masculine",
       "type": "Warm, spicy",
-      "description":"Hand made Gold Leaf bottle with ruby cap and decorated with swarovski crystals design. Perfume notes include: cinnamon, cardamom, damask rose, egyptian jasmine and incense."
+      "description":"Bonita Men - Le Bleu is a perfume by Bonita for men and was released in 2015. It is being marketed by ars Parfum."
     },
     { 
       "id": 3,
-      "title":"Ponita-Men", 
+      "title":"Day Light", 
       "price": 100,
       "size": "100ml",
-      "image": "Ponita-men.png",
-      "category":"masculine",
+      "image": "assets/bonita-day-light.png",
+      "category":"feminine",
       "type": "Citrus, Spicy",
-      "description":"California Citrus, white flowers and Green notes. Dry down: Leather, Cognac, Sandalwood and Musk."
+      "description":"Day Light is a perfume by Bonita for women. The release year is unknown. It is still available to purchase."
     },
     { 
       "id": 4,
-      "title":"Ponita-Men II", 
+      "title":"Belle de Jour", 
       "price": 100,
       "size": "100ml",
-      "image": "Ponita-men-two.png",
-      "category":"masculine",
+      "image": "assets/bonita-men-selection.png",
+      "category":"feminine",
       "type": "Citrus/Fresh/Oriental Woody",
-      "description":"Fresh Greens, Tea Leaves and Leather gently blend with notes of Cardamom, Peppercorn and Thyme. Bottom notes of Amber and Sandalwood create an inviting dry-down."
+      "description":"Belle de Jour is a perfume by Bonita for women and was released in 2017. It is still available to purchase."
     },
     { 
       "id": 5,
-      "title":"Ponita Incense - unisex", 
+      "title":"Rose Glow", 
       "price": 22,
       "size": "150ml",
-      "image": "Ponita-incense.png",
+      "image": "assets/bonita-rose-glow.png",
       "category":"masculine",
       "type": "Woody, dark",
-      "description":"Woody notes of Incense and Amber are brightened with wildberries, lavender and rose, while deep notes of black pepper and Oud blend with sprinkles of Cassia and Clove."
+      "description":"Rose Glow is a perfume by Bonita for women. The release year is unknown. It is still available to purchase."
     },
     { 
       "id": 6,
-      "title":"Ponita Oud", 
+      "title":"Fleur de Bonita No. II", 
       "price": 135,
       "size": "50ml",
-      "image": "Ponita-oud.png",
-      "category":"masculine",
+      "image": "assets/fleur-de-bonita-no-ii.png",
+      "category":"feminine",
       "type": "Sensual, Warm",
-      "description":"As the incense burning in ancient temples, Ponita Oud carries exotic notes of rose woods and borrowed cardamom from Ponita Classic, to develop a sensuous veil of sandalwoods with warm amber and hints of vetiver."
+      "description":"Fleur de Bonita No. II is a perfume by Bonita for women. The release year is unknown. It is being marketed by ars Parfum."
     },
     { 
       "id": 7,
-      "title":"Ponita Oud Black", 
+      "title":"Bonita Deluxe", 
       "price": 130,
       "size": "50ml",
-      "image": "Ponita-oud-black.png",
+      "image": "assets/bonita-deluxe.png",
       "category":"masculine",
       "type": "Woody Floral",
-      "description":"With hints of deep red Roses and precious Agarwood, Oud Black is richly scented with woody notes in veils of Vanilla, Sandalwood and Incense. Exotic florals and sensuous woods provide for an alluring trail."
+      "description":"Bonita Deluxe is a perfume by Bonita for women. The release year is unknown. It is being marketed by ars Parfum."
     },
     { "id": 8,
-    "title":"Vie d'Amour MEN", 
+    "title":"Bonita Deluxe No. II", 
     "price":100,
     "size": "100ml",
-    "image": "Ponita-amour-men.png",
-    "category":"masculine",
+    "image": "assets/bonita_deluxe_no_ii.png",
+    "category":"feminine",
     "type": "Citrus/Fresh",
-    "description":"Fresh, energizing and envigorating, Vie d'Amour MEN captures the romance and spirit of man. Crisp top notes of lime, ginger, and fresh greens blend into an exhilarating fusion of Bergamot, Pear and Almond. A fresh and sensuous base of cedarwood and sandalwood embrace a dry-down of tonka bean and vanilla bourbon."
-  },
-  { 
-    "id": 9,
-    "title":"Ponita Black", 
-    "price": 100,
-    "size": "50ml",
-    "image": "Ponita-black.png",
-    "category":"masculine",
-    "type": "Sensual, Warm",
-    "description":"Capturing the dramatic allure of an Arabian Wedding, Ponita Black represents the sensuality of love's warm embrace. In notes of Oud, wrapped in Amber, emotions are ignited in this lover's scents of Sandalwood and Incense."
+    "description":"Bonita Deluxe No. II is a perfume by Bonita for women. The release year is unknown. It was last marketed by ars Parfum."
   },
   ]
   

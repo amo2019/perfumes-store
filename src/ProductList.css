@@ -28,11 +28,11 @@ hr {
 }
 
 .card-title {
-  color: #002ca4;
+  color: #232427;
 }
 
 .perfume-links {
-  color: #0019a4;
+  color: #0d1127;
   font-size: 15pt;
   padding-left: 10px;
   font-weight: bold;
@@ -47,7 +47,7 @@ hr {
 }
 
 .perfume-links:hover {
-  color: #2b9eb3;
+  color: #151420;
 }
 
 .product-list-card-container {
@@ -55,7 +55,6 @@ hr {
   flex-direction: row;
   display: flex;
   flex-wrap: wrap;
-  max-height: 125ch;
   max-width: 125ch;
   width: 100%;
   justify-content: space-around;

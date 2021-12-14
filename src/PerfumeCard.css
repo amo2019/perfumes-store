@@ -7,3 +7,11 @@
   background-position: center center;
 }
 
+img {
+  max-width: 80%;
+  height: 322px;
+  vertical-align: middle;
+  max-height: 80%;
+  object-fit: contain;
+}
+
