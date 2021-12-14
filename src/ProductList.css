@@ -1,7 +1,7 @@
 .perfume-container {
   display: flex;
   flex-direction: column;
-  min-height: 800px;
+  min-height: 600px;
   justify-content: center;
 }
 
@@ -28,11 +28,11 @@ hr {
 }
 
 .card-title {
-  color: #0034a4;
+  color: #002ca4;
 }
 
 .perfume-links {
-  color: #0034a4;
+  color: #0019a4;
   font-size: 15pt;
   padding-left: 10px;
   font-weight: bold;
@@ -41,9 +41,25 @@ hr {
   white-space: nowrap;
 }
 
+.perfume-links:not(:last-child)::after {
+  content: " /";
+  padding-left: 10px;
+}
+
+.perfume-links:hover {
+  color: #2b9eb3;
+}
+
 .product-list-card-container {
   padding-bottom: 16px;
   flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 125ch;
+  max-width: 125ch;
+  width: 100%;
+  justify-content: space-around;
+  align-self: center;
 }
 
 .product-list-card {

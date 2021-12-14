@@ -1,0 +1,111 @@
+.header {
+  z-index: 100;
+  width:100vw;
+  background-color: #FBF7F4;
+}
+
+.nav-item {
+  color: #202024;
+  font-size:12pt;
+  margin-right: 10px;
+  padding-left:8px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.MuiIconButton-label {
+  color:rgb(29, 28, 31);
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  padding: 4px;
+  align-items: center;
+  justify-content: space-around;
+  align-content: center;
+}
+
+a:hover {
+  color: #151516;
+}
+
+.link-block {
+ display:flex;
+ flex-direction:row;
+ justify-content: center;
+}
+
+.search-bar{
+  margin-top: 5px;
+  height: 30px;
+}
+
+.title-offset, .icon-block {
+  width:156px;
+}
+
+.icon-block {
+  align-items:flex-end;
+  display:flex;
+  flex-direction:row;
+}
+
+.search-block {
+  display:flex;
+  flex-grow: .12;
+  position: relative;
+  width: 80px;
+}
+
+.search-container {
+  display:flex;
+  flex-direction:row;
+  justify-content: flex-end;
+  min-width: fit-content;
+  margin-top: 6px;
+}
+
+.search-icon { 
+  display:flex;
+  flex-direction:row;
+  justify-content: flex-end;
+}
+
+.title-block {
+  flex-grow: 1;
+  text-align:center;
+  font-size:24pt;
+}
+
+.home-title {
+  display: flex;
+  text-decoration: none;
+  color: black;
+  align-items: center;
+  margin-left: 15px;
+  font-size: 30px;
+  font-weight:bold;
+}
+
+.home-title:hover {
+  color:rgb(34, 34, 39);
+}
+
+.account-icon {
+  padding-right: 12px;
+}
+
+.MuiOutlinedInput-input {
+  padding: 14px 14px !important;
+}
+
+.MuiInputLabel-outlined {
+  transform: translate(14px, 12px) scale(1) !important;
+}
+
+.MuiInputBase-input {
+  height: 0.66em !important;
+}
+
+
