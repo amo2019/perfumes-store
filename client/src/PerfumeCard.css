@@ -1,0 +1,17 @@
+.card {
+  width: 25ch;
+  height: 32ch;
+  background: white;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center center;
+}
+
+img {
+  max-width: 80%;
+  height: 322px;
+  vertical-align: middle;
+  max-height: 80%;
+  object-fit: contain;
+}
+
