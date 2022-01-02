@@ -1,0 +1,16 @@
+.customButtonContainer {
+  min-width: 145px;
+  width: auto;
+  height: 40px;
+  letter-spacing: 0.5px;
+  line-height: 40px;
+  padding: 0 35px 0 35px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed';
+  font-weight: bolder;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}

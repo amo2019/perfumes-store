@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createBrowserHistory } from 'history';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App history={createBrowserHistory()}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

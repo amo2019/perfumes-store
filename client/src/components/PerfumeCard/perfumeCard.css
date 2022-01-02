@@ -7,7 +7,7 @@
   background-position: center center;
 }
 
-img {
+.card-img {
   max-width: 80%;
   height: 322px;
   vertical-align: middle;

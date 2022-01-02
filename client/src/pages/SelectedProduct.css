@@ -33,7 +33,7 @@
 }
 
 .qty {
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .product-details {
@@ -50,9 +50,21 @@ margin-bottom: 20px;
 }
 
 .add-to-cart-button-container {
- margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .add-to-cart-button-mobile {
   display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .product-desc {
+    font-size:14pt;
+  }
+  .title {
+    font-size: 20pt;
+  }
+  .price {
+    font-size:14pt;
+  }
 }

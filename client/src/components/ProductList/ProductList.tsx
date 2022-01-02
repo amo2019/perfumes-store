@@ -1,16 +1,22 @@
 import { useState, useEffect } from 'react';
-import PerfumeCard from './PerfumeCard';
-import './ProductList.css';
-import {getProducts} from './lib/products';
-import { Product } from './perfumes';
+import PerfumeCard from '../PerfumeCard/PerfumeCard';
+import './productList.css';
+import {fetchProducts, selectProducts, store} from '../../lib/store';
+import { Provider, useSelector, useDispatch } from "react-redux";
 
-
+import { Product } from '../../perfumes';
 
 export default function ProductList() {
-  const [products, setProducts] = useState<Product[]>();
-
+  const products = useSelector(selectProducts);
+  const state = useSelector(state=>state);
+  console.log("store:", store.getState());
+  console.log("products:", products);
+  
+  // const [products, setProducts] = useState<Product[]>();
+  const dispatch = useDispatch();
   useEffect(() => {
-        getProducts()?.then(setProducts);
+    dispatch(fetchProducts());
+        // getProducts()?.then(setProducts);
   }, []);
    if(!products ) return <></>;
 

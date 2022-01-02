@@ -1,22 +1,27 @@
 import {useParams} from 'react-router-dom';
 import {useEffect, useState} from 'react';
-import {getProductById, API_SERVER} from '../lib/products';
-import './SelectedProduct.css';
+import {API_SERVER} from '../lib/products';
+import {selectProducts} from '../lib/store'
+import './selectedProduct.css';
 import { Product, initialState } from '../perfumes';
+import { useSelector } from "react-redux";
+import { addToCart } from "../lib/cart";
+
 
 const ProductSelected = (): JSX.Element => {
   const [product, setProduct] = useState<Product>();
-  const [price, setPrice] = useState();
-
+  //const [price, setPrice] = useState();
+  const products = useSelector(selectProducts);
 
   const {id} = useParams();
   useEffect(() => {
       if (id) {
-        getProductById(id).then(setProduct);
+        setProduct(products.find(product => product.id === Number(id)))
       } else {
         setProduct(initialState);
       }
-  }, [id]);
+  }, [id, products]);
+
    if(!product ) return <></>;
    
     return (
@@ -33,8 +38,8 @@ const ProductSelected = (): JSX.Element => {
           <div className="price">
            PRICE: ${product.price} USD
           </div>
-          <div className="add-to-cart-button-container">
-            <button id="add-to-cart-button" >Add To Cart</button>
+          <div className="add-to-cart-button-container">          
+            <button id="add-to-cart-button" onClick={() => addToCart(product.id.toString())}>Add To Cart</button>
           </div>
           <div className="product-desc">
             {product.description}
