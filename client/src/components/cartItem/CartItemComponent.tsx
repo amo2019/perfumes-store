@@ -1,24 +1,24 @@
 import React from "react";
 
 import "./cartItemStyles.css";
-import { CartItem } from "../../lib/cart";
+import { CartItem, deleteOne } from "../../lib/cart";
 interface Props {
   cartItem: CartItem
 }
 
 
 const CartItemComponent: React.FC<Props>  = ({ cartItem }) => {
-  const { image, price, name, quantity } = cartItem;
+  const { id, image, price, name, quantity } = cartItem;
   return (
     <div className="cartItemContainer">
       <img className="cartItemImage" src={image} alt="item" />
       <div className="itemDetailsContainer">
         <span>{name}</span>
-        <span>
+        <span >
           {quantity} x ${price}
         </span>
       </div>
-      <div className="removeItemContainer">
+      <div className="removeItemContainer" onClick={()=>deleteOne("1", id.toString(), "0")}>
         &#10060;
       </div>
     </div>

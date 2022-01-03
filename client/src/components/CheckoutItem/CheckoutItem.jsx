@@ -1,9 +1,9 @@
 import React from 'react';
-
 import './checkoutItemStyles.css';
+import { deleteOne, addToCart } from "../../lib/cart";
 
 const CheckoutItem = ({ cartItem }) => {
-  const { name, image, price, quantity } = cartItem;
+  const { id, name, image, price, quantity } = cartItem;
   console.log("cartItem::", cartItem, image)
   console.log("image::", image)
   return (
@@ -13,12 +13,12 @@ const CheckoutItem = ({ cartItem }) => {
       </div>
       <span className='textContainer spanClass'>{name}</span>
       <div className='quantityContainer'>
-        <div >&#10094;</div>
+        <div onClick={()=>deleteOne("1", id.toString(), "1")}>&#10094;</div>
         <span className='spanClass'>{quantity}</span>
-        <div >&#10095;</div>
+        <div onClick={() => addToCart(id.toString())}>&#10095;</div>
       </div>
       <span className='textContainer spanClass'>{price}</span>
-      <div className='removeButtonContainer' >
+      <div className='removeButtonContainer' onClick={()=>deleteOne("1", id.toString(), "0")}>
         &#10005;
       </div>
     </div>

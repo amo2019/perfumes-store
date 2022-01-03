@@ -13,7 +13,7 @@ const Nav = (props: React.HTMLAttributes<string>) => {
       className: styles.className,
       activeClassName: styles.activeClassName,
       to: '/',
-      name: 'HOME'
+      name: ''
     }
    
   ]

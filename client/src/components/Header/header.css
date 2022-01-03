@@ -53,9 +53,14 @@ a:hover {
 
 .search-block {
   display:flex;
+  
+}
+
+.search-block-show{
+
   flex-grow: .12;
   position: relative;
-  width: 80px;
+  width: 16px;
 }
 
 .search-container {
@@ -70,6 +75,7 @@ a:hover {
   display:flex;
   flex-direction:row;
   justify-content: flex-end;
+  
 }
 
 .title-block {
@@ -86,6 +92,30 @@ a:hover {
   margin-left: 15px;
   font-size: 30px;
   font-weight:bold;
+}
+
+@media screen and (max-width: 800px) {
+  .home-title {
+    font-size: 18px;
+    margin-left: 5px;
+  }
+  .search-block-show{
+    flex-grow: .12;
+    width: 12px;
+  }
+  .search-container {
+    min-width: min-content;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .home-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+  .account-icon {
+    padding-right: 0px !important;
+  }
 }
 
 .home-title:hover {

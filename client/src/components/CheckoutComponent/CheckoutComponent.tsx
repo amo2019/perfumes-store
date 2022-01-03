@@ -8,7 +8,13 @@ import './checkoutStyles.css';
 const CheckoutPage = ({...cartItems}: CartItem[]) => {
   const propertyValues = Object.values(cartItems);
 
-console.log("result:",propertyValues);
+  const resultArray = Object.keys(cartItems).map((personNamedIndex:any) => cartItems[personNamedIndex]);
+  const total = resultArray.reduce(
+    (accumalatedQuantity: number, cartItem: { quantity: number; price: number; }) =>
+      accumalatedQuantity + cartItem.quantity * cartItem.price,
+    0
+  ) 
+
 const handleClick = ()=>{
   console.log("clearCart:",clearCart);
   clearCart("1")
@@ -39,7 +45,7 @@ const handleClick = ()=>{
     }
     )}
     <div className='flex-div'>
-    <div className='totalContainer'>TOTAL: ${344}</div>
+    <div className='totalContainer'>TOTAL: ${total}</div>
     <button className="clearButton" onClick={handleClick} >
               Clear Cart
     </button>

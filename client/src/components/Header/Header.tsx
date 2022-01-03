@@ -40,7 +40,7 @@ interface Props {
           <div className="title-block">
               <Nav  className="nav-item"/>
           </div>
-          <div className="search-block">
+          <div className="search-block" {...toggleState ? "search-block-show" : null}>
           
             <div className="search-icon">
                 <IconButton onClick={toggleSearchField}> 

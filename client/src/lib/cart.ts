@@ -56,4 +56,21 @@ export const clearCart = (id: string = "1"): Promise<void> =>
       getCart();
     });
 
+    export const deleteOne = (id: string = "1", productId: string, one: string = "0"): Promise<void> => {
+      var headers = new Headers();
+      headers.append("productId", productId);
+      headers.append("one", one);
+    
+      return fetch(`${API_SERVER}/cart/${productId}/${one}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user: {userId: id} }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        getCart();
+      });
+    }
 
