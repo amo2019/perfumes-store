@@ -1,0 +1,45 @@
+.mainContainer {
+  width: 200px;
+  top: 4rem;
+  right: 25px;
+  color: black;
+  padding: 1.25rem;
+  background-color: rgb(121 129 141);
+  border-color: rgb(99, 97, 97);
+  border-width: 4px;
+  border-radius: 0.5rem;
+  position: absolute;
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.inputBox {
+font-size: 1.1rem;
+line-height: 1.25rem;
+border-width: 1px;
+border-radius: 0.15rem;
+border-color: rgb(70, 67, 67);
+width: 100%;
+color: inherit;
+
+}
+
+.smallButton {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: white;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: rgb(39, 35, 35);
+  border-radius: 0.25rem;
+  margin-top: 1.25rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  cursor: pointer;
+
+}
+
+.smallButton:hover{
+background-color: rgb(57, 55, 55);
+}

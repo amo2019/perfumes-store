@@ -16,7 +16,6 @@ const CheckoutPage = ({...cartItems}: CartItem[]) => {
   ) 
 
 const handleClick = ()=>{
-  console.log("clearCart:",clearCart);
   clearCart("1")
 }
   return (
@@ -40,7 +39,6 @@ const handleClick = ()=>{
       </div>
     </div>
     {propertyValues.map((cartItem: CartItem, index) => {
-      console.log("cartItemIn:",cartItem, index)
       return <CheckoutItem key={cartItem.id} cartItem={cartItem} />
     }
     )}

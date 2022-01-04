@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import {NavLink} from 'react-router-dom';
 import { Provider, useDispatch, useSelector } from 'react-redux';
-
+import Login from "../Login/Login";
 import CartDropdown from '../CartDropdown/CartDropdown'
 import Nav from '../Nav';
 import AddShoppingCartOutlinedIcon from '@material-ui/icons/AddShoppingCartOutlined';
@@ -28,7 +28,7 @@ interface Props {
 
  const  Header: React.FC<Props> = ({toggleState, setToggleState, search, onSetSearch}) => {
   const [items, setItems] = useState<CartItem[]>([]);
-
+  const [showLogin, setShowLogin] = useState(false);
 
  
 
@@ -60,14 +60,13 @@ interface Props {
                </div>
             </div>
             </div>
-              <div className="cart-icon"  onClick={() => {
-          setToggleState(!toggleState);
-        }}>
-                <IconButton >
+              <div className="cart-icon topbarIconItem"  onClick={() => { setToggleState(!toggleState); }}>
+               <IconButton >
                   <AddShoppingCartOutlinedIcon />
                 </IconButton>
+              <span className="topbarIconBadge">{items.length}</span>
               </div>
-              <div className="account-icon">
+              <div className="account-icon" onClick={() => setShowLogin(!showLogin)}>
                 <div className="login-icon-container">
                 <IconButton >
                   <PermIdentityOutlinedIcon/>
@@ -76,6 +75,7 @@ interface Props {
               </div>
           </div>
           {toggleState ? null : <CartDropdown cartItems={items} clearCart={clearCart} toggleState={toggleState} setToggleState={setToggleState}/>}
+          {showLogin && <Login/>}
       </div>
     )
   }

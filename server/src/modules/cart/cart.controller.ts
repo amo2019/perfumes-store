@@ -47,7 +47,6 @@ export class CartController {
     const cartItem = cart.cartItems.find(
       (cartItem) => cartItem.id === parseInt(id),
     );
-    console.log("cartItem:", cartItem)
 
     if (cartItem) {
       cartItem.quantity += 1;
@@ -62,8 +61,6 @@ export class CartController {
 
   @Delete()
   async destroy(@Request() req): Promise<Cart> {
-    console.log("user:", req.body.user)
-    console.log("userId:", req.body.user.userId)
     this.carts[req.body.user.userId] = { cartItems: [] };
     return this.carts[req.body.user.userId];
   }
@@ -71,7 +68,6 @@ export class CartController {
   @Delete('/:productId/:one')
   async delete(@Request() req, @Param('productId') productId, @Param('one') one): Promise<Cart> {
     const cart = this.carts[req.body.user.userId];
-    console.log("one:", one)
 
     const cartItem = cart.cartItems.find(
       (cartItem) => cartItem.id === parseInt(productId),

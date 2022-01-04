@@ -1,9 +1,6 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import CartItemComponent from "../cartItem/CartItemComponent";
 import { CartItem, cart, clearCart } from "../../lib/cart";
-
-
 import "./cartDropdownStyles.css";
 import { History } from 'history';
 import { useNavigate } from 'react-router-dom';
@@ -19,21 +16,34 @@ interface Props {
 }
 
 
-const CartDropdown: React.FC<Props> = ({ cartItems, toggleState, clearCart, history, setToggleState }) => {
+const CartDropdown: React.FC<Props> = ({ cartItems, toggleState, history, setToggleState }) => {
   const navigate = useNavigate();
+  const [items, setItems] = useState<CartItem[]>();
+
+  useEffect(() => {
+    setItems(cart.value?.cartItems);
+    const sub = cart.subscribe((c) => {
+      setItems(c?.cartItems);
+    });
+    return () => sub.unsubscribe();
+  }, [setItems]);
+
+  if (!items) return null;
 
   return (
   <div className="cartDropdownContainer" >
-    {cartItems?.length ? (
+    {items?.length ? (
       <div className="cartItemsContainer">
-        {cartItems.map((cartItem) => (
+        {items.map((cartItem: CartItem) => (
           <CartItemComponent cartItem={cartItem}/>
         ))}
       </div>
     ) : (
       <span className="emptyMessageContainer">Your cart is empty</span>
     )}
-    {cartItems?.length ? (
+    <div className="flexDiv">
+    {items?.length ? (
+      <>
       <button className="customButtonContainer buttonStyles"
         onClick={() => {
           navigate("/checkout");
@@ -42,9 +52,12 @@ const CartDropdown: React.FC<Props> = ({ cartItems, toggleState, clearCart, hist
       >
         GO TO CHECKOUT
       </button>
+      <button onClick={()=>clearCart("1")} className="customButtonContainer invertedButtonStyles">CLEAR CART</button>
+      </>
     ) : (
-      <button className="customButtonContainer invertedButtonStyles">GO TO CHECKOUT</button>
+      <button className="customButtonContainer invertedButtonStyles">CART IS EMPTY</button>
     )}
+  </div>
   </div>
 );
     }

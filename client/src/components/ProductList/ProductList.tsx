@@ -28,8 +28,6 @@ export default function ProductList({search}: any) {
     [productsSelector, search]
   );
   
-  console.log("store:", store.getState());
-  console.log("products:", products);
   
   // const [products, setProducts] = useState<Product[]>();
   const dispatch = useDispatch();

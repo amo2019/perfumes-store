@@ -7,7 +7,6 @@ const Nav = (props: React.HTMLAttributes<string>) => {
     activeClassName: props.className,
     id:'menu-item'
   }
-  console.log("styles: ", styles)
   const links = [
     {
       className: styles.className,

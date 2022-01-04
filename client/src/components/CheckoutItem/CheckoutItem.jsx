@@ -4,8 +4,6 @@ import { deleteOne, addToCart } from "../../lib/cart";
 
 const CheckoutItem = ({ cartItem }) => {
   const { id, name, image, price, quantity } = cartItem;
-  console.log("cartItem::", cartItem, image)
-  console.log("image::", image)
   return (
     <div className='checkoutItemContainer'>
       <div className='imageContainer'>
