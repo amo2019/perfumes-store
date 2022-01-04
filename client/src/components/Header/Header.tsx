@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
-import {NavLink, Link} from 'react-router-dom';
+import React, { useState, useEffect} from "react";
+import {NavLink} from 'react-router-dom';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+
 import CartDropdown from '../CartDropdown/CartDropdown'
 import Nav from '../Nav';
 import AddShoppingCartOutlinedIcon from '@material-ui/icons/AddShoppingCartOutlined';
@@ -9,20 +11,26 @@ import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import IconButton from "@material-ui/core/IconButton";
 import './header.css';
 
-
+import {
+  store,
+} from "../../lib/store";
 import { CartItem, cart, clearCart } from "../../lib/cart";
 import { currency } from "../../lib/products";
-import { History } from 'history';
 
 interface Props {
   setToggleState: React.Dispatch<React.SetStateAction<boolean>>;
   toggleState: boolean;
   history?: History;
   cartItems?: CartItem[];
+  search: string;
+  onSetSearch: (search: string) => void;
 }
 
- const  Header: React.FC<Props> = ({toggleState, setToggleState, history}) => {
+ const  Header: React.FC<Props> = ({toggleState, setToggleState, search, onSetSearch}) => {
   const [items, setItems] = useState<CartItem[]>([]);
+
+
+ 
 
   useEffect(() => {
     const sub = cart.subscribe((value) => setItems(value?.cartItems ?? []));
@@ -31,6 +39,7 @@ interface Props {
  const [showSearchField, setShowSearchField] = useState(false)
  const toggleSearchField = () => {
     setShowSearchField(!showSearchField);
+    if(showSearchField) onSetSearch("");
   }
   
     return (
@@ -47,7 +56,7 @@ interface Props {
                   <SearchOutinedIcon />
                 </IconButton>
               <div className="search-container">
-               {showSearchField && <SearchBar />}
+               {showSearchField && <SearchBar onSetSearch={onSetSearch} search={search}/>}
                </div>
             </div>
             </div>
@@ -66,9 +75,8 @@ interface Props {
                 </div>
               </div>
           </div>
-          {toggleState ? null : <CartDropdown cartItems={items} clearCart={clearCart} toggleState={toggleState}  history={history} setToggleState={setToggleState}/>}
+          {toggleState ? null : <CartDropdown cartItems={items} clearCart={clearCart} toggleState={toggleState} setToggleState={setToggleState}/>}
       </div>
     )
   }
-
   export default Header;

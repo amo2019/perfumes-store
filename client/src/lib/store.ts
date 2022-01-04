@@ -2,7 +2,9 @@ import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "@redux-saga/core";
 import { Product, getProducts, updateProduct, deleteProduct, createProduct } from "./api";
 import { put, takeEvery } from "redux-saga/effects";
+import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from 'reselect';
+
 
 function* getProductsAction() {
   const products: Product[] = yield getProducts();
@@ -117,3 +119,4 @@ export const addProduct = (text: string) => ({
   type: "CREATE_PRODUCT_REQUESTED",
   payload: text,
 });
+

@@ -5,21 +5,33 @@ import CheckoutPage from './components/CheckoutComponent/CheckoutComponent'
 import ProductList from './components/ProductList/ProductList';
 import SeletedProduct from './pages/SelectedProduct'
 import  Header  from "./components/Header/Header";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { CartItem, cart, clearCart } from "./lib/cart";
+import {useNavigate} from 'react-router-dom';
+
 
 import {
   store,
 } from "./lib/store";
-import { History } from 'history';
 
 export interface Props {
   items: CartItem[];
+  search: string;
+  onSetSearch: (search: string) => void;
 }
 
-function App(props: { history: History; }) {
+function App() {
   const [items , setItems] = useState<Props["items"]>([]);
   const [toggleState,  setToggleState] = useState(true)
+  const [search, setSearch] = useState("");
+
+ 
+  const onSetSearch = useCallback(
+    (search: string) => {
+      setSearch(search);
+    },
+    []
+  );
 
   useEffect(() => {
     const sub = cart.subscribe((value) => setItems(value?.cartItems ?? []));
@@ -30,9 +42,9 @@ function App(props: { history: History; }) {
   <Router >
       <div className="App">
       <Provider store={store}>
-      <Header history={props.history} toggleState={toggleState} setToggleState={setToggleState}/>
+      <Header toggleState={toggleState} setToggleState={setToggleState} search={search} onSetSearch={onSetSearch}/>
       <Routes> 
-        <Route path="/" element={<ProductList/>} />
+        <Route path="/" element={<ProductList search={search}/>} />
         <Route path="/perfume/:id" element={<SeletedProduct/>} />
         <Route path="/checkout" element={ <CheckoutPage {...items}/>  }/>
       </Routes>

@@ -1,14 +1,33 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import PerfumeCard from '../PerfumeCard/PerfumeCard';
 import './productList.css';
 import {fetchProducts, selectProducts, store} from '../../lib/store';
-import { Provider, useSelector, useDispatch } from "react-redux";
-
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import { Product } from '../../perfumes';
 
-export default function ProductList() {
+export type RootState = ReturnType<typeof store.getState>;
+
+
+export default function ProductList({search}: any) {
   const products = useSelector(selectProducts);
   const state = useSelector(state=>state);
+  const productsSelector = useSelector(
+    (state: RootState) => state
+  );
+ 
+  const filteredProducts = useMemo(
+    () =>
+      (productsSelector ?? []).filter(
+        (product: { title: string | any[]; description: any; }) =>
+          product.title
+            .includes(search) ||
+          product.description
+            .toLocaleLowerCase()
+            .includes(search)
+      ),
+    [productsSelector, search]
+  );
+  
   console.log("store:", store.getState());
   console.log("products:", products);
   
@@ -17,8 +36,9 @@ export default function ProductList() {
   useEffect(() => {
     dispatch(fetchProducts());
         // getProducts()?.then(setProducts);
-  }, []);
+  }, [dispatch]);
    if(!products ) return <></>;
+
 
  return (
       <div className="perfume-container">
@@ -32,7 +52,7 @@ export default function ProductList() {
           <hr className="divider-line"/>
         </div>
         <div className="product-list-card-container">
-          {products.map((card: Product) => (
+          {filteredProducts.map((card: Product) => (
             <div className="product-list-card" key={card?.id}>
               <PerfumeCard {...card} />
             </div>
