@@ -6,9 +6,7 @@ import ProductList from './components/ProductList/ProductList';
 import SeletedProduct from './pages/SelectedProduct'
 import  Header  from "./components/Header/Header";
 import { useState, useEffect, useCallback } from "react";
-import { CartItem, cart, clearCart } from "./lib/cart";
-import {useNavigate} from 'react-router-dom';
-
+import { CartItem, cart } from "./lib/cart";
 
 import {
   store,
@@ -25,7 +23,15 @@ function App() {
   const [toggleState,  setToggleState] = useState(true)
   const [search, setSearch] = useState("");
 
- 
+  const handleTogggleState = useCallback(
+    () => {
+      setToggleState(!toggleState);
+    },
+    [toggleState]
+  );
+
+  const togggleStateOff = () => setToggleState(true);
+  
   const onSetSearch = useCallback(
     (search: string) => {
       setSearch(search);
@@ -42,9 +48,9 @@ function App() {
   <Router >
       <div className="App">
       <Provider store={store}>
-      <Header toggleState={toggleState} setToggleState={setToggleState} search={search} onSetSearch={onSetSearch}/>
+      <Header toggleState={toggleState} setToggleState={handleTogggleState} search={search} onSetSearch={onSetSearch}/>
       <Routes> 
-        <Route path="/" element={<ProductList search={search}/>} />
+        <Route path="/" element={<ProductList search={search} setToggleState={togggleStateOff}/>} />
         <Route path="/perfume/:id" element={<SeletedProduct/>} />
         <Route path="/checkout" element={ <CheckoutPage {...items}/>  }/>
       </Routes>

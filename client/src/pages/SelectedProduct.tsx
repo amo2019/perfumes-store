@@ -38,8 +38,8 @@ const ProductSelected = (): JSX.Element => {
           <div className="price">
            PRICE: ${product.price} USD
           </div>
-          <div className="add-to-cart-button-container">          
-            <button id="add-to-cart-button" onClick={() => addToCart(product.id.toString())}>Add To Cart</button>
+          <div className="add-to-cart-button">          
+            <button className="cart-button" onClick={() => addToCart(product.id.toString())}>Add To Cart</button>
           </div>
           <div className="product-desc">
             {product.description}

@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useEffect, useMemo } from "react";
 import PerfumeCard from '../PerfumeCard/PerfumeCard';
 import './productList.css';
 import {fetchProducts, selectProducts, store} from '../../lib/store';
-import { Provider, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Product } from '../../perfumes';
 
 export type RootState = ReturnType<typeof store.getState>;
 
 
-export default function ProductList({search}: any) {
+export default function ProductList({search, setToggleState}: any) {
   const products = useSelector(selectProducts);
-  const state = useSelector(state=>state);
   const productsSelector = useSelector(
     (state: RootState) => state
   );
@@ -28,26 +27,23 @@ export default function ProductList({search}: any) {
     [productsSelector, search]
   );
   
-  
-  // const [products, setProducts] = useState<Product[]>();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
-        // getProducts()?.then(setProducts);
   }, [dispatch]);
    if(!products ) return <></>;
 
 
  return (
-      <div className="perfume-container">
+      <div className="perfume-container" >
+        <div onClick={() => setToggleState()}>
         <div className="most-popular">
           MOST POPULAR
         </div>
         <div className="perfume-cards">
            products
         </div>
-        <div>
-          <hr className="divider-line"/>
+        <div className="divider-line"/>
         </div>
         <div className="product-list-card-container">
           {filteredProducts.map((card: Product) => (

@@ -24,6 +24,7 @@
   align-items: center;
   justify-content: space-around;
   align-content: center;
+  border-bottom: 2px #e7e7e7 solid
 }
 
 a:hover {

@@ -3,12 +3,13 @@ import './checkoutItemStyles.css';
 import { deleteOne, addToCart } from "../../lib/cart";
 
 const CheckoutItem = ({ cartItem }) => {
-  const { id, name, image, price, quantity } = cartItem;
+  const { id, name, image, price, quantity, title } = cartItem;
   return (
     <div className='checkoutItemContainer'>
       <div className='imageContainer'>
         <img src={image} alt='item' />
       </div>
+      <span className='textContainer spanClass'>{title}</span>
       <span className='textContainer spanClass'>{name}</span>
       <div className='quantityContainer'>
         <div onClick={()=>deleteOne("1", id.toString(), "1")}>&#10094;</div>

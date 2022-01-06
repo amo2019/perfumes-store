@@ -8,7 +8,7 @@
 .most-popular {
   text-align: center;
   font-size: 15pt;
-  padding-top: 50px;
+  padding-top: 30px;
   color: black;
 }
 
@@ -16,8 +16,9 @@
   align-items: center;
 }
 
-hr {
-  color: black;
+.divider-line {
+  border-bottom: 2px rgb(204, 202, 202) solid;
+  margin-top: 1rem;
 }
 
 .perfumes-links-container {

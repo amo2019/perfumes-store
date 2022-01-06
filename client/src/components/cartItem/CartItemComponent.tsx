@@ -8,11 +8,12 @@ interface Props {
 
 
 const CartItemComponent: React.FC<Props>  = ({ cartItem }) => {
-  const { id, image, price, name, quantity } = cartItem;
+  const { id, image, price, name, quantity, title } = cartItem;
   return (
     <div className="cartItemContainer">
       <img className="cartItemImage" src={image} alt="item" />
       <div className="itemDetailsContainer">
+        <span className="titleSpan">{title}</span>
         <span>{name}</span>
         <span >
           {quantity} x ${price}

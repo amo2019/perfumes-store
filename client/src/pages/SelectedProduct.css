@@ -49,12 +49,24 @@
   text-align:center;
 }
 
-.add-to-cart-button-container {
+.add-to-cart-button {
   margin-bottom: 20px;
 }
 
-.add-to-cart-button-mobile {
-  display: none;
+.cart-button {
+  background-color: black;
+  padding: .4rem 2rem;
+  color: white;
+  border: none;
+  stroke: blueviolet;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+
+.cart-button:hover {
+  background-color: white;
+  color: black;
 }
 
 @media screen and (max-width: 800px) {

@@ -1,13 +1,13 @@
 .mainContainer {
   width: 200px;
-  top: 4rem;
+  top: 3.7rem;
   right: 25px;
   color: black;
   padding: 1.25rem;
-  background-color: rgb(121 129 141);
-  border-color: rgb(99, 97, 97);
-  border-width: 4px;
-  border-radius: 0.5rem;
+  background-color: rgb(244, 244, 244);
+  border-color: rgb(6 6 6);
+  border: 1px rgb(52, 51, 51) solid;
+  border-radius: 0.1rem;
   position: absolute;
   font-weight: 700;
   font-size: 1.875rem;
@@ -29,13 +29,11 @@ color: inherit;
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: white;
-  padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   background-color: rgb(39, 35, 35);
   border-radius: 0.25rem;
   margin-top: 1.25rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding: .2rem 5rem;
   cursor: pointer;
 
 }

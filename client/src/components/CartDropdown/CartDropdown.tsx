@@ -2,22 +2,19 @@ import React, { useEffect, useState } from "react";
 import CartItemComponent from "../cartItem/CartItemComponent";
 import { CartItem, cart, clearCart } from "../../lib/cart";
 import "./cartDropdownStyles.css";
-import { History } from 'history';
 import { useNavigate } from 'react-router-dom';
+import { useLoggedIn } from "../../lib/cart";
 
 
 interface Props {
-  cartItems: CartItem[];
   setToggleState: React.Dispatch<React.SetStateAction<boolean>>;
   toggleState: boolean;
-  history?: History;
-  cartItem?: CartItem;
-  clearCart: () => Promise<void>
 }
 
 
-const CartDropdown: React.FC<Props> = ({ cartItems, toggleState, history, setToggleState }) => {
+const CartDropdown: React.FC<Props> = ({ toggleState, setToggleState }) => {
   const navigate = useNavigate();
+  const loggedIn = useLoggedIn();
   const [items, setItems] = useState<CartItem[]>();
 
   useEffect(() => {
@@ -28,18 +25,18 @@ const CartDropdown: React.FC<Props> = ({ cartItems, toggleState, history, setTog
     return () => sub.unsubscribe();
   }, [setItems]);
 
-  if (!items) return null;
+  //if (!items) return null;
 
   return (
   <div className="cartDropdownContainer" >
     {items?.length ? (
       <div className="cartItemsContainer">
         {items.map((cartItem: CartItem) => (
-          <CartItemComponent cartItem={cartItem}/>
+          <CartItemComponent key={cartItem.id} cartItem={cartItem}/>
         ))}
       </div>
     ) : (
-      <span className="emptyMessageContainer">Your cart is empty</span>
+      <span className="emptyMessageContainer"> {loggedIn? 'Your cart is empty': 'Your cart is empty (please login)'}</span>
     )}
     <div className="flexDiv">
     {items?.length ? (
@@ -55,7 +52,7 @@ const CartDropdown: React.FC<Props> = ({ cartItems, toggleState, history, setTog
       <button onClick={()=>clearCart("1")} className="customButtonContainer invertedButtonStyles">CLEAR CART</button>
       </>
     ) : (
-      <button className="customButtonContainer invertedButtonStyles">CART IS EMPTY</button>
+      null
     )}
   </div>
   </div>

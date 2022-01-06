@@ -1,6 +1,6 @@
 import React from 'react';
 import CheckoutItem from '../CheckoutItem/CheckoutItem';
-import { CartItem, cart, clearCart } from "../../lib/cart";
+import { CartItem, clearCart } from "../../lib/cart";
 
 import './checkoutStyles.css';
 
