@@ -1,0 +1,31 @@
+{
+  "name": "perfumes",
+  "version": "1.0.0",
+  "description": "react-next perfumes ecommerce app",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amo2019/perfumes-store.git"
+  },
+  "author": "Amin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amo2019/perfumes-store/issues"
+  },
+  "homepage": "https://github.com/amo2019/perfumes-store#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "scripts": {
+    "build": "cd client && npm run build",
+    "start": "node server",
+    "start:client": "cd client && yarn start",
+    "start:server": "cd server && yarn start",
+    "start:dev": "npm-run-all -p start:client start:server",
+    "install:dev": "yarn && cd client && yarn && cd ../server && yarn",
+    "postinstall": "cd server && yarn"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6"
+  }
+}

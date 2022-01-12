@@ -1,6 +1,5 @@
 import CheckoutItem from '../CheckoutItem/CheckoutItem';
 import { CartItem, clearCart } from "../../lib/cart";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Transaction from '../Modal/Transaction';
 import './checkoutStyles.css';
@@ -15,7 +14,6 @@ const CheckoutPage = ({...cartItems}: CartItem[]) => {
   const [paid, setPaid] = useState(false);
   const currency = "USD";
   const style: any = { layout: "vertical" };
-  const dispatch = useDispatch();
   
   const propertyValues = Object.values(cartItems);
 
@@ -38,7 +36,7 @@ const handlePaid = ()=>{
   //setTimeout(()=>{setPaid(false);}, 6000)
 }
   const ButtonWrapper = ({ currency, showSpinner }:any) => {
-    const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+    const [{ options }, dispatch] = usePayPalScriptReducer();
 
     useEffect(() => {
       dispatch({
@@ -71,7 +69,6 @@ const handlePaid = ()=>{
                 ],
               })
               .then((orderId) => {
-                // Your code here after create the order
                 return orderId;
               });
           }}

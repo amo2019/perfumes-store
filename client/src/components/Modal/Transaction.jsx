@@ -1,9 +1,6 @@
-import { useState } from "react";
 import "./transaction.css";
 
 const Transaction = ({ total, setPaid }) => {
-  const [customer, setCustomer] = useState("");
-  const [address, setAddress] = useState("");
 
   const handleClick = ()=>{
     setPaid(false)
