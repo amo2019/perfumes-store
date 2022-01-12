@@ -10,6 +10,10 @@
 
 .flex-div {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
   @media screen and (max-width: 800px) {
@@ -67,13 +71,37 @@ warningContainer {
   border: 1px solid black;
   background-color: white;
   cursor: pointer;
-  flex-basis: min-content;
+  flex-basis: content;
+  margin-left: 10px;
+  padding: 6px 6px;
 }
 
 
 .clearButton:hover {
 background-color: black;
 color: white;
-border: none;
+}
 
+.paymentMethods {
+  margin-top: 35px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  height: 30px;
+  color: #425e44;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.payButton {
+  padding: 10px 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  background-color: white;
+  color: teal;
+  font-weight: bold;
 }
