@@ -14,7 +14,7 @@ const CheckoutPage = ({...cartItems}: CartItem[]) => {
   const [paid, setPaid] = useState(false);
   const currency = "USD";
   const style: any = { layout: "vertical" };
-  
+  const API_SERVER = "http://localhost:8080";
   const propertyValues = Object.values(cartItems);
 
   const resultArray = Object.keys(cartItems).map((personNamedIndex:any) => cartItems[personNamedIndex]);
@@ -24,8 +24,7 @@ const CheckoutPage = ({...cartItems}: CartItem[]) => {
     0
   ) 
 
-  let prevTotal = total;
-  const secretKey: any = process.env.REACT_APP_SECRET_CODE?.toString();
+const secretKey: any = process.env.REACT_APP_SECRET_CODE?.toString();
 
 const handleClick = ()=>{
   clearCart("1")
@@ -56,26 +55,30 @@ const handlePaid = ()=>{
           disabled={false}
           forceReRender={[total, currency, style]}
           fundingSource={undefined}
-          createOrder={(data, actions) => {
-            return actions.order
-              .create({
-                purchase_units: [
-                  {
-                    amount: {
-                      currency_code: currency,
-                      value: total.toString(),
-                    },
-                  },
-                ],
+          createOrder={function () {
+            return fetch(`${API_SERVER}/cart/order`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                items: resultArray,
+              }),
+            })
+              .then(res => {
+                if (res.ok) return res.json()
+                return res.json().then(json => Promise.reject(json))
               })
-              .then((orderId) => {
-                return orderId;
-              });
+              .then(({ id }) => {
+                return id
+              })
+              .catch(e => {
+                console.error(e.error)
+              })
           }}
           onApprove={function (data, actions) {
             return actions.order.capture().then(function (details) {
               handlePaid();
-              handleClick();
             });
           }}
         />
@@ -131,7 +134,7 @@ const handlePaid = ()=>{
     </button>
     </div>
     <div className='warningContainer'>
-    {paid && <Transaction total={prevTotal} setPaid={setPaid}/>}
+    {paid && <Transaction total={total} setPaid={setPaid}/>}
       Please use one of the following test credit cards
       <br />
       4242 4242 4242 4242 - Exp: 01/24 - CVV: 123

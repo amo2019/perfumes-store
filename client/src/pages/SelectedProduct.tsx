@@ -6,13 +6,13 @@ import './selectedProduct.css';
 import { Product, initialState } from '../perfumes';
 import { useSelector } from "react-redux";
 import { addToCart } from "../lib/cart";
-
+import { useLoggedIn } from "../lib/cart";
 
 const ProductSelected = (): JSX.Element => {
   const [product, setProduct] = useState<Product>();
   //const [price, setPrice] = useState();
   const products = useSelector(selectProducts);
-
+  const loggedIn = useLoggedIn();
   const {id} = useParams();
   useEffect(() => {
       if (id) {
@@ -38,8 +38,9 @@ const ProductSelected = (): JSX.Element => {
           <div className="price">
            PRICE: ${product.price} USD
           </div>
-          <div className="add-to-cart-button">          
-            <button className="cart-button" onClick={() => addToCart(product.id.toString())}>Add To Cart</button>
+          <div className="add-to-cart-button">  
+                  
+            <button style={ !loggedIn ? { opacity: 0.65, cursor: "not-allowed", color: "red"} : {}} title={!loggedIn? "Please login to activate Add To Cart button!": ""} className="cart-button" onClick={() => addToCart(product.id.toString())}>Add To Cart</button>
           </div>
           <div className="product-desc">
             {product.description}
