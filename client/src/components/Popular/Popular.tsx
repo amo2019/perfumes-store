@@ -125,7 +125,6 @@ const [name, setName] = useState(perfumes[current].title)
            />
            <text
              id="prod-text"
-             text={text}
              x="3"
              y="57"
              style={{
