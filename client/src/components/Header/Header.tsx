@@ -62,7 +62,7 @@ interface Props {
                 </IconButton>
               <span className="topbarIconBadge">{items.length}</span>
               </div>
-              <div className="account-icon" onClick={() => setShowLogin(!showLogin)}>
+              <div className={!loggedIn ? 'account-icon blinking-icon' : 'account-icon'} onClick={() => setShowLogin(!showLogin)}>
                 <div className="login-icon-container" >
                 <IconButton >
                   <PermIdentityOutlinedIcon style={{color: loggedIn ? 'green' : 'red'}}/>

@@ -4,6 +4,7 @@ import './productList.css';
 import {fetchProducts, selectProducts, store} from '../../lib/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Product } from '../../perfumes';
+import { Popular } from "../Popular/Popular";
 
 export type RootState = ReturnType<typeof store.getState>;
 
@@ -37,11 +38,11 @@ export default function ProductList({search, setToggleState}: any) {
  return (
       <div className="perfume-container" >
         <div onClick={() => setToggleState()}>
-        <div className="most-popular">
+        <a className="most-popular" href="#popular">
           MOST POPULAR
-        </div>
+        </a>
         <div className="perfume-cards">
-           products
+           {/* products */}
         </div>
         <div className="divider-line"/>
         </div>
@@ -52,6 +53,9 @@ export default function ProductList({search, setToggleState}: any) {
             </div>
           ))}
         </div>
+        <section id="popular">
+        <Popular />
+        </section>
       </div>
     )
 }

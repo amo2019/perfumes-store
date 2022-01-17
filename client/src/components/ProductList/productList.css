@@ -6,10 +6,19 @@
 }
 
 .most-popular {
+  display: inline-block;
+  padding-top: 1rem;
   text-align: center;
-  font-size: 15pt;
-  padding-top: 30px;
+  font-family: Raleway;
+  font-size: 1.2rem;
   color: black;
+  font-weight: 400;
+  text-decoration: none;
+  transition: font-weight 400ms ease-out;
+}
+
+.most-popular:hover {
+ font-weight: 600;
 }
 
 .perfume-cards {

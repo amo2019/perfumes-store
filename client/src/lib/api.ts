@@ -63,16 +63,3 @@ export const deleteProduct = async (product: Product): Promise<Product> =>
   fetch(`${API_SERVER}/products/${product.id}`, {
     method: "DELETE",
   }).then(() => product);
-
-
-
-/*   import { Provider, useSelector, useDispatch } from "react-redux";
-
-import {
-  store,
-  selectProduct,
-  fetchProducts,
-  toggleProduct,
-  removeProduct,
-  addProduct,
-} from "./lib/store"; */

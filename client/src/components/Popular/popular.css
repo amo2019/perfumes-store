@@ -1,0 +1,9 @@
+.carousel {
+  display: flex;
+}
+
+.slider-image {
+  transition: all 400ms ease-in-out;
+  pointer-events: none;
+  margin-left: 6rem;
+}

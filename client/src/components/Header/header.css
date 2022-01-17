@@ -88,6 +88,7 @@ a:hover {
 .home-title {
   display: flex;
   text-decoration: none;
+  font-family: Raleway;
   color: black;
   align-items: center;
   margin-left: 15px;
@@ -117,6 +118,23 @@ a:hover {
   font-size: 12px;
 }
 
+.account-icon {
+  padding-right: 15px;
+}
+
+.blinking-icon {
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
 @media screen and (max-width: 800px) {
   .home-title {
     font-size: 18px;
@@ -143,10 +161,6 @@ a:hover {
 
 .home-title:hover {
   color:rgb(34, 34, 39);
-}
-
-.account-icon {
-  padding-right: 12px;
 }
 
 .MuiOutlinedInput-input {
