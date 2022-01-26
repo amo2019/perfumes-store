@@ -4,6 +4,7 @@ import { join } from 'path';
 import { ProductsModule } from './modules/products/products.module';
 import { AppController } from './app.controller';
 import { CartModule } from './modules/cart/cart.module';
+import { OrderModule } from './modules/order/order.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersService } from './users/users.service';
 
@@ -17,6 +18,7 @@ import { UsersService } from './users/users.service';
     }),
     ProductsModule,
     CartModule,
+    OrderModule,
     AuthModule,
   ],
 })

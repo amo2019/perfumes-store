@@ -3,14 +3,11 @@ import {
   Controller,
   Get,
   Request,
-  UseGuards,
   Post,
   Body,
   Delete,
-  Header,
   Param,
   Response,
-  Res,
 } from '@nestjs/common';
 
 ConfigModule.forRoot({
@@ -108,51 +105,6 @@ export class CartController {
   async cart(@Response() res) {
     return {
       paypalClientId: process.env.PAYPAL_CLIENT_ID,
-    }
-  }
-  
-  
-@Post("/order")
-async order(@Request() req) {
-    const request = new paypal.orders.OrdersCreateRequest()
-    const total = req.body.items.reduce((sum, item) => {      
-      return sum +  products.find((product) => product.id === item.id).price * item.quantity
-    }, 0)
-    request.prefer("return=representation")
-    request.requestBody({
-      intent: "CAPTURE",
-      purchase_units: [
-        {
-          amount: {
-            currency_code: "USD",
-            value: total,
-            breakdown: {
-              item_total: {
-                currency_code: "USD",
-                value: total,
-              },
-            },
-          },
-          items: req.body.items.map(item => {
-            const storeItem = products.find((product) => product.id === item.id)//products[item.id]
-            return {
-              name: storeItem.title,
-              unit_amount: {
-                currency_code: "USD",
-                value: storeItem.price,
-              },
-              quantity: item.quantity,
-            }
-          }),
-        },
-      ],
-    })
-  
-    try {
-      const order = await paypalClient.execute(request)
-      return{ id: order.result.id }
-    } catch (e) {
-      return{ error: e.message }
     }
   }
 

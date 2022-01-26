@@ -56,10 +56,12 @@ const handlePaid = ()=>{
           forceReRender={[total, currency, style]}
           fundingSource={undefined}
           createOrder={function () {
-            return fetch(`${API_SERVER}/cart/order`, {
+            return fetch(`${API_SERVER}/order`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": "true",
               },
               body: JSON.stringify({
                 items: resultArray,
@@ -135,11 +137,6 @@ const handlePaid = ()=>{
     </div>
     <div className='warningContainer'>
     {paid && <Transaction total={total} setPaid={setPaid}/>}
-      Please use one of the following test credit cards
-      <br />
-      4242 4242 4242 4242 - Exp: 01/24 - CVV: 123
-      <br />
-      4242 4242 4242 4242 Visa Any 3 digits Any future date
     </div>
   </div>
 );

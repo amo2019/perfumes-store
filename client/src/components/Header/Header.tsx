@@ -41,7 +41,9 @@ interface Props {
     return (
       <div className="header">
        <div className="nav-container">
-        <NavLink to="/" className="home-title"> PERFUMES </NavLink>
+       <NavLink to="/" className="logo-container"> 
+           <img src="assets/logo.png" className="logo" alt="app logo" /> 
+       </NavLink>
           <div className="title-block">
               <Nav  className="nav-item"/>
           </div>
