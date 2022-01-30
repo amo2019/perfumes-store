@@ -10,7 +10,7 @@ import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import IconButton from "@material-ui/core/IconButton";
 import './header.css';
 import { CartItem, cart } from "../../lib/cart";
-import { useLoggedIn } from "../../lib/cart";
+import { useLoggedIn, loggedOut } from "../../lib/cart";
 
 
 interface Props {
@@ -26,8 +26,6 @@ interface Props {
   const [showLogin, setShowLogin] = useState(false);
   const loggedIn = useLoggedIn();
 
- 
-
   useEffect(() => {
     const sub = cart.subscribe((value) => setItems(value?.cartItems ?? []));
     return () => sub.unsubscribe();
@@ -36,6 +34,10 @@ interface Props {
  const toggleSearchField = () => {
     setShowSearchField(!showSearchField);
     if(showSearchField) onSetSearch("");
+  }
+
+  const logOut = () =>{
+    loggedOut()
   }
   
     return (
@@ -64,7 +66,7 @@ interface Props {
                 </IconButton>
               <span className="topbarIconBadge">{items.length}</span>
               </div>
-              <div className={!loggedIn ? 'account-icon blinking-icon' : 'account-icon'} onClick={() => setShowLogin(!showLogin)}>
+              <div className={!loggedIn ? 'account-icon blinking-icon' : 'account-icon'} onClick={() => setShowLogin(!showLogin)} onDoubleClick={()=>logOut()} title={loggedIn ? 'Double click to logout' : 'Please login'}>
                 <div className="login-icon-container" >
                 <IconButton >
                   <PermIdentityOutlinedIcon style={{color: loggedIn ? 'green' : 'red'}}/>

@@ -1,5 +1,4 @@
 import { useState, useEffect} from "react";
-
 import { BehaviorSubject } from "rxjs";
 import type { Product } from "./products";
 export interface CartItem extends Product {
@@ -88,6 +87,8 @@ export const clearCart = (id: string = "1"): Promise<void> =>
     .then((res) => res.json())
     .then((data) => {
       jwt.next(data.access_token);
+        localStorage.setItem("user", JSON.stringify({username,
+          password, token: data.access_token}));
       getCart();
       return data.access_token;
     });
@@ -102,5 +103,11 @@ export const clearCart = (id: string = "1"): Promise<void> =>
         return () => sub.unsubscribe();
       }, []);
       return loggedIn;
+    }
+    
+    export function loggedOut(): boolean {
+      jwt.next(null);
+      localStorage.removeItem("user");
+      return false;
     }
 

@@ -1,4 +1,3 @@
-
 .checkoutPageContainer {
   width: 55%;
   min-height: 90vh;
@@ -16,11 +15,16 @@
   margin-bottom: 10px;
 }
 
-  @media screen and (max-width: 800px) {
-    .checkoutPageContainer {
-      width: 90%;
-    }
+@media screen and (max-width: 800px) {
+  .checkoutPageContainer {
+    width: 90%;
   }
+  .flex-div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
+}
 
 button {
   margin-left: auto;
@@ -40,14 +44,14 @@ button {
   width: 23%;
 }
 
-  @media screen and (max-width: 800px) {
-    .headerBlockContainer{
-      width: 22%
-    }
-    .headerBlockContainer:last-child {
-      width: 12%;
-    }
+@media screen and (max-width: 800px) {
+  .headerBlockContainer {
+    width: 22%;
   }
+  .headerBlockContainer:last-child {
+    width: 12%;
+  }
+}
 
 .headerBlockContainer:last-child {
   width: 8%;
@@ -66,7 +70,6 @@ warningContainer {
   color: green;
 }
 
-
 .clearButton {
   border: 1px solid black;
   background-color: white;
@@ -76,10 +79,9 @@ warningContainer {
   padding: 6px 6px;
 }
 
-
 .clearButton:hover {
-background-color: black;
-color: white;
+  background-color: black;
+  color: white;
 }
 
 .paymentMethods {

@@ -1,5 +1,14 @@
 import products from '../perfumes';
 export const API_SERVER = "http://localhost:8080";
+
+export interface User {
+  name?: string;
+  password?: string;
+  status?: string;
+  token?: string;
+  error?: string;
+}
+
 export interface Product {
   id: number;
   title: string;

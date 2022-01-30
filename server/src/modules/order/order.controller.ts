@@ -83,9 +83,7 @@ export class OrderController {
 
     try {
       const order = await paypalClient.execute(request);
-      console.log('order:', order);
       return { id: order.result.id, 'client-id': order.result.id };
-      //return { 'client-id': order.result.id };
     } catch (e) {
       return { error: e.message };
     }

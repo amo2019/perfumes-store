@@ -12,7 +12,7 @@ export type RootState = ReturnType<typeof store.getState>;
 export default function ProductList({search, setToggleState}: any) {
   const products = useSelector(selectProducts);
   const productsSelector = useSelector(
-    (state: RootState) => state
+    (state: RootState) => state.product
   );
  
   const filteredProducts = useMemo(

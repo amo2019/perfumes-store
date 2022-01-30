@@ -6,7 +6,7 @@ import ProductList from './components/ProductList/ProductList';
 import SeletedProduct from './pages/SelectedProduct'
 import  Header  from "./components/Header/Header";
 import { useState, useEffect, useCallback } from "react";
-import { CartItem, cart } from "./lib/cart";
+import { CartItem, cart, login } from "./lib/cart";
 
 import {
   store,
@@ -22,6 +22,14 @@ function App() {
   const [items , setItems] = useState<Props["items"]>([]);
   const [toggleState,  setToggleState] = useState(true)
   const [search, setSearch] = useState("");
+
+  useEffect(()=>{
+    const status = localStorage.getItem("user"); 
+    if (typeof status === 'string') {
+        const {username, password} = JSON.parse(status)
+        login(username, password)
+    }
+  }, [])
 
   const handleTogggleState = useCallback(
     () => {

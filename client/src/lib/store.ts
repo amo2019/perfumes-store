@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import createSagaMiddleware from "@redux-saga/core";
-import { Product, getProducts, updateProduct, deleteProduct, createProduct } from "./api";
+import { Product, User, getProducts, updateProduct, deleteProduct, createProduct } from "./api";
 import { put, takeEvery } from "redux-saga/effects";
 
 
@@ -46,7 +46,18 @@ function* rootSaga() {
   yield takeEvery("CREATE_PRODUCT_REQUESTED", createProductAction);
 }
 
-const reducer = (
+const userReducer = (
+  state: User = {},
+  action: { type: "USER_FETCH_SUCCEEDED"; payload: User }
+) => {
+  switch (action.type) {
+    case "USER_FETCH_SUCCEEDED":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+const productReducer = (
   state: Product[] = [],
   action: { type: "PRODUCTS_FETCH_SUCCEEDED"; payload: Product[] }
 ) => {
@@ -62,13 +73,20 @@ export const toggleCartHidden = () => ({
   type: "TOGGLE_CART_HIDDEN",
 });
 
+const rootReducer = combineReducers({
+  user: userReducer,
+  product: productReducer,
+});
+
 const sagaMiddleware = createSagaMiddleware();
 
-export const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+export const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(rootSaga);
 
-export const selectProducts = (state: Product[]) => state;
+export type RootState = ReturnType<typeof store.getState>;
+
+export const selectProducts = (state: RootState) => state.product;
 
 export const fetchProducts = () => ({ type: "PRODUCTS_FETCH_REQUESTED" });
 
@@ -81,3 +99,38 @@ export const addProduct = (text: string) => ({
   payload: text,
 });
 
+
+/* function* signInStartAction({
+  payload,
+}: {
+  type: "SIGN_IN_START";
+  payload: User;
+}) {
+  yield signInStart(payload);
+  yield put({ type: "SIGN_IN_FETCH_REQUESTED" });
+}
+
+function* signInSuccessAction({
+  payload,
+}: {
+  type: "SIGN_IN_SUCCESS";
+  payload: User;
+}) {
+  yield signInSuccess(payload);
+  yield put({ type: "SIGN_IN_FETCH_REQUESTED" });
+}
+
+function* signInFailureAction({
+  payload,
+}: {
+  type: "SIGN_IN_FAILURE";
+  payload: string;
+}) {
+  yield signInFailure(payload);
+  yield put({ type: "SIGN_IN_FETCH_REQUESTED" });
+}
+
+function* signOutFailureAction() {
+  yield signOutStart();
+  yield put({ type: "SIGN_OUT_FETCH_REQUESTED" });
+} */
